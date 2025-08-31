@@ -4,11 +4,31 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<UserSecretsId>c26f5dd7-faaa-4fc8-b8a6-13783a2f39f0</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Duende.IdentityServer" Version="7.0.8" />
+		<PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="7.0.8" />
+		<PackageReference Include="Duende.IdentityServer.EntityFramework" Version="7.0.8" />
+		<PackageReference Include="Duende.IdentityServer.EntityFramework.Storage" Version="7.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.19" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.19" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.19">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.19" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.19">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 
 		<PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Data\Migrations\AspIdentity\" />
+	  <Folder Include="Data\Migrations\Configuration\" />
+	  <Folder Include="Data\Migrations\PersistedGrant\" />
 	</ItemGroup>
 </Project>
