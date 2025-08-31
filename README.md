@@ -41,25 +41,29 @@ This solution is designed as a **reference implementation** to:
 - [SQL Server / SQLite / PostgreSQL] (depending on your Entity Framework provider)
 - An IDE such as [Visual Studio 2022](https://visualstudio.microsoft.com/?utm_source=chatgpt.com)
 ### ⚙️ Setup & Run
+1. Add **IdentityServer** templates for dotnet CLI
+``` bach
+   dotnet new install Duende.Templates
+```
 
-1. **Clone the repository**
+2. **Clone the repository**
 ```bach 
    git clone https://github.com/MhSaleemAlZayat/IdentityServer.dotnet8.Implementation.git
   cd your-repo-name
 ```
    
-2.  **Update database (for IdentityServer + ASP.NET Identity)**  
+3.  **Update database (for IdentityServer + ASP.NET Identity)**  
 	   From the `IdentityServer` project folder:
 	   ```pach
 	     dotnet ef database update
 	   ```
-3. **Run the projects**
+4. **Run the projects**
 
 - Start **IdentityServer** first
 - Then run **APIResource**
 - Finally, run **WebClient**
 
-3. **Test the flow**
+5. **Test the flow**
 - Navigate to `https://localhost:5002`
 - Login via IdentityServer
 - Access the protected API through the WebClient
