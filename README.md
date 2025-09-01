@@ -51,19 +51,17 @@ This solution is designed as a **reference implementation** to:
    git clone https://github.com/MhSaleemAlZayat/IdentityServer.dotnet8.Implementation.git
   cd your-repo-name
 ```
-   
-3.  **Update database (for IdentityServer + ASP.NET Identity)**  
-	   From the `IdentityServer` project folder:
-	   ```pach
-	     dotnet ef database update
-	   ```
+3. Go to `appsettings.json` in `IdentityServer` project and uncommit `DefaultConnection` then change connection string setting
+``` json
+//"DefaultConnection": "Server={YOUR-SERVER-NAME};Database=IdentityServer;User Id={YOUR-USER-ID}; Password={YOUR-PASSWORD};Trusted_Connection=False;MultipleActiveResultSets=true;Encrypt=False"
+```
 4. **Run the projects**
-
 - Start **IdentityServer** first
 - Then run **APIResource**
 - Finally, run **WebClient**
 
 5. **Test the flow**
-- Navigate to `https://localhost:5002`
-- Login via IdentityServer
+- Navigate to `https://localhost:5003`
+- Login via IdentityServer using `ahmed` or `samira` with `P@ssw0rd` password.
 - Access the protected API through the WebClient
+- Nagigate to `https://localhost:5003/Home/BrowseEmployees` to browse the randome employees.
