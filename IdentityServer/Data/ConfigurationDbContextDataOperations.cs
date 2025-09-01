@@ -15,6 +15,22 @@ public static class ConfigurationDbContextDataOperations
     private static List<Duende.IdentityServer.Models.Client> GetClients =>
         new List<Duende.IdentityServer.Models.Client>
         {
+             new Duende.IdentityServer.Models.Client
+                {
+                    ClientId = "client",
+
+                    // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Duende.IdentityServer.Models.Secret("secret".Sha256())
+                    },
+
+                    // scopes that client has access to
+                    AllowedScopes = { "employee_api" }
+                },
                 // interactive ASP.NET Core Web App
                 new Duende.IdentityServer.Models.Client
                 {
