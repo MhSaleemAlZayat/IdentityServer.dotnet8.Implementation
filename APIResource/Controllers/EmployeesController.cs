@@ -1,10 +1,12 @@
 ﻿using APIResource.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIResource.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+[Authorize]
 public class EmployeesController : ControllerBase
 {
     private static readonly string[] Departments = new[]
