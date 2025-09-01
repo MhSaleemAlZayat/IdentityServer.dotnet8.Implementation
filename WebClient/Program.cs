@@ -1,3 +1,5 @@
+using WebClient.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -32,6 +34,8 @@ builder.Services.AddAuthentication(options =>
         options.SaveTokens = true;
     });
 
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IEmployeeApiService, EmployeeApiService>();
 
 var app = builder.Build();
 
