@@ -1,0 +1,23 @@
+﻿@model List<EmployeeApiModel>
+
+    <h2>Employees Browsing</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Birthdate</th>
+        <th>Department</th>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Name</td>
+                <td>@emp.Email</td>
+                <td>@emp.Birthdate</td>
+                <td>@emp.Department</td>
+            </tr>
+        }
+    </tbody>
+</table>
