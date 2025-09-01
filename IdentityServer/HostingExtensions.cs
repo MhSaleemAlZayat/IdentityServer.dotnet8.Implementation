@@ -13,9 +13,7 @@ internal static class HostingExtensions
         // uncomment if you want to add a UI
         builder.Services.AddRazorPages();
 
-
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
 
         //Configure Asp Identity DbContext.
         builder.Services.AddDbContext<ApplicationIdentityDbContext>(
@@ -26,16 +24,6 @@ internal static class HostingExtensions
         builder.Services.AddIdentity<User, Role>()
                .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
                .AddDefaultTokenProviders();
-
-        // Configure IdentityServer with in-memory stores, keys, clients and scopes
-        //builder.Services.AddIdentityServer(options =>
-        //    {
-        //        // https://docs.duendesoftware.com/identityserver/v6/fundamentals/resources/api_scopes#authorization-based-on-scopes
-        //        options.EmitStaticAudienceClaim = true;
-        //    })
-        //    .AddInMemoryIdentityResources(Config.IdentityResources)
-        //    .AddInMemoryApiScopes(Config.ApiScopes)
-        //    .AddInMemoryClients(Config.Clients);
 
         // Configure IdentityServer with EF Core stores and ASP.NET Identity
         var isBuilder = builder.Services
@@ -60,7 +48,6 @@ internal static class HostingExtensions
                         dbOpts.UseCompatibilityLevel(120);
                     });
             })
-            //.AddTestUsers(TestUsers.Users)
             // this is something you will want in production to reduce load on and requests to the DB
             .AddConfigurationStoreCache()
             //
@@ -91,7 +78,7 @@ internal static class HostingExtensions
         {
             app.UseDeveloperExceptionPage();
         }
-
+        app.SeedingConfigurationData();
         // uncomment if you want to add a UI
         app.UseStaticFiles();
         app.UseRouting();
