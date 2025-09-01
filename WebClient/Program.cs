@@ -1,7 +1,37 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+    .AddRazorRuntimeCompilation();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = "Cookies";
+    options.DefaultChallengeScheme = "oidc";
+})
+    .AddCookie("Cookies")
+    .AddOpenIdConnect("oidc", options =>
+    {
+        options.Authority = "https://localhost:5001";
+
+        options.ClientId = "web";
+        options.ClientSecret = "secret";
+        options.ResponseType = "code";
+
+        options.Scope.Clear();
+        options.Scope.Add("openid");
+        options.Scope.Add("profile");
+        options.Scope.Add("employee_api");
+        options.Scope.Add("offline_access");
+        options.Scope.Add("verification");
+
+        options.GetClaimsFromUserInfoEndpoint = true;
+
+        options.MapInboundClaims = false; // Don't rename claim types
+
+        options.SaveTokens = true;
+    });
+
 
 var app = builder.Build();
 
